@@ -48,6 +48,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [Axios](https://axios-http.com/ptbr/docs/intro)
 - [NextAuth.js](https://next-auth.js.org/)
 - [Prettier](https://prettier.io/docs/en/install.html)
+- [Shadcn](https://ui.shadcn.com/)
 
 
 ## Contact
