@@ -28,17 +28,17 @@ const Header = () => {
             </SheetTrigger>
 
             <SheetContent side="left">
-              <SheetHeader className="text-left text-lg font-semibold">
+              <SheetHeader className="text-left text-lg font-semibold ">
                 Menu
                 </SheetHeader>
 
 
             {status === "authenticated" && data?.user && (
             <div className="flex flex-col">
-              <div className="flex items-center gap-2 py-4">
+              <div className="flex items-center gap-8 py-4 ">
                 <Avatar>
                   <AvatarFallback>
-                    {data.user.name?.[2].toUpperCase()}
+                    {data.user.name?.[0].toUpperCase()}
                   </AvatarFallback>
 
                   {data.user.image && <AvatarImage src={data.user.image} className="w-10 rounded-full" />}
