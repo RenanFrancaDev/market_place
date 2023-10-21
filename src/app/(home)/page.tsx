@@ -6,6 +6,7 @@ import ProductList from '@/components/ui/product-list';
 import { prismaClient } from '@/lib/prisma';
 import SectionTitle from '@/components/ui/section-title';
 import PromoBanner from './components/promo-banner';
+import Footer from '@/components/ui/footer';
 
 export default async function Home() {
   //data = info user
@@ -62,6 +63,7 @@ export default async function Home() {
 
     <SectionTitle>Teclados</SectionTitle>
     <ProductList products={mouses}/>
+    <Footer/>
     </div>
   )
 }
