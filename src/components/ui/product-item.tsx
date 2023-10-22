@@ -2,6 +2,7 @@ import { ProductWithTotalPrice } from "@/helpers/products";
 import { ArrowDownIcon } from "lucide-react";
 import Image from 'next/image'
 import { Badge } from "./badge";
+import Link from "next/link";
 
 interface ProductItemProp {
     product: ProductWithTotalPrice
@@ -9,6 +10,7 @@ interface ProductItemProp {
 
 const ProductItem = ({ product }: ProductItemProp) => {
     return ( 
+        <Link href={`/product/${product.slug}`}>
         <div className="flex flex-col gap-4 max-w-[170px]">
              <div className="relative flex h-[170px]  items-center justify-center rounded-lg bg-accent">
              <Image
@@ -18,7 +20,7 @@ const ProductItem = ({ product }: ProductItemProp) => {
              sizes="100vw"
              className="h-[90px] max-h-[70%] w-auto max-w[80%]"
              style={{
-               objectFit: "contain",
+               objectFit: "contain"
              }}
              alt={product.name}
           />
@@ -54,6 +56,7 @@ const ProductItem = ({ product }: ProductItemProp) => {
           </div>
         </div>
         </div>
+        </Link>
      );
 }
  
