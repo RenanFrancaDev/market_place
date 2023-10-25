@@ -3,7 +3,7 @@
 import { ProductWithTotalPrice } from "@/helpers/products";
 import { ReactNode, createContext, useState } from "react";
 
-interface CartProduct extends ProductWithTotalPrice {
+export interface CartProduct extends ProductWithTotalPrice {
   quantity: number;
 }
 
@@ -13,6 +13,7 @@ interface ICartContext {
   cartBasePrice: number;
   cartTotalDiscount: number;
   addProductToCart: (product: CartProduct) => void;
+  decreaseProductToCart: (productId: string) => void;
 }
 
 export const CartContext = createContext<ICartContext>({
@@ -21,6 +22,7 @@ export const CartContext = createContext<ICartContext>({
   cartBasePrice: 0,
   cartTotalDiscount: 0,
   addProductToCart: () => {},
+  decreaseProductToCart: () => {}
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
@@ -48,9 +50,21 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
 
       return;
     }
-
-
     setProducts((prev) => [...prev, product]);
+  };
+
+  const decreaseProductToCart = (productId: string) => {
+    setProducts((prev) =>
+      prev.map((cartProduct) =>{
+        if (cartProduct.id === productId)
+        return {
+          ...cartProduct,
+          quantity: cartProduct.quantity -1
+        }
+        return cartProduct
+      })
+      .filter((cartProduct) => cartProduct.quantity > 0)
+    );
   };
 
   return (
@@ -58,6 +72,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
       value={{
         products,
         addProductToCart,
+        decreaseProductToCart,
         cartTotalPrice: 0,
         cartBasePrice: 0,
         cartTotalDiscount: 0,
