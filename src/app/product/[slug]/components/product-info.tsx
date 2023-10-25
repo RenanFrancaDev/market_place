@@ -13,7 +13,7 @@ interface ProductInfoProps {
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1);
-  const {addProductsToCart} = useContext(CartContext)
+  const {addProductToCart} = useContext(CartContext)
 
 
   const handleDecreaseQuantityClick = () => {
@@ -25,7 +25,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
   };
 
   const handleAddToCartClick = () => {
-    addProductsToCart({...product, quantity});
+    addProductToCart({...product, quantity});
   }
   return (
     <div className="flex flex-col px-5">
