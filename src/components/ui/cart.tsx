@@ -4,9 +4,10 @@ import { CartContext } from "@/providers/cart";
 import CartItem from "./cart-item";
 import { ShoppingCartIcon } from "lucide-react";
 import { computeProductTotalPrice } from "@/helpers/products";
+import { Separator } from "./separator";
 
 const Cart = () => {
-    const {products} = useContext(CartContext)
+  const { products, subtotal, total, totalDiscount } = useContext(CartContext);
     return ( 
         <div>
             <Badge
@@ -17,16 +18,54 @@ const Cart = () => {
             Carrinho
         </Badge>
 
-        <div className="flex flex-col gap-5">
-        {products.map((product) => (
-          <CartItem
-            key={product.id}
-            product={computeProductTotalPrice(product as any) as any}
-          />
-        ))}
+        <div className="flex flex-col gap-5 mt-8">
+        {products.length > 0 ? (
+          products.map((product) => (
+            <CartItem
+              key={product.id}
+              product={computeProductTotalPrice(product as any) as any}
+            />
+          ))
+        ) : (
+          <p>
+            Você ainda não adicionou nenhum produto ao carrinho
+          </p>
+        )}
       </div>
-      
+
+      {products.length > 0 && (
+        <div className="flex flex-col gap-3">
+          <Separator />
+
+          <div className="flex items-center justify-between text-xs">
+            <p>Subtotal</p>
+            <p>R$ {subtotal.toFixed(2)}</p>
+          </div>
+
+          <Separator />
+
+          <div className="flex items-center justify-between text-xs">
+            <p>Entrega</p>
+            <p>GRÁTIS</p>
+          </div>
+
+          <Separator />
+
+          <div className="flex items-center justify-between text-xs">
+            <p>Descontos</p>
+            <p>- R$ {totalDiscount.toFixed(2)}</p>
+          </div>
+
+          <Separator />
+
+          <div className="flex items-center justify-between text-sm font-bold">
+            <p>Total</p>
+            <p>R$ {total.toFixed(2)}</p>
+          </div>
         </div>
+      )}
+  
+      </div>
      );
 }
  
