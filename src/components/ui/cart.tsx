@@ -15,9 +15,10 @@ const Cart = () => {
   const { products, subtotal, total, totalDiscount } = useContext(CartContext);
 
   const handleFinishPurchaseClick = async () => {
-   
-  
+    
+    console.log("oi")
     const checkout = await createCheckout(products);
+    console.log(checkout)
 
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
