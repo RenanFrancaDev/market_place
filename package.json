@@ -26,7 +26,7 @@
     "clsx": "^2.0.0",
     "lucide-react": "^0.287.0",
     "next": "13.5.5",
-    "next-auth": "^4.24.3",
+    "next-auth": "^4.24.4",
     "react": "^18",
     "react-dom": "^18",
     "stripe": "^14.2.0",
