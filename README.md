@@ -1,4 +1,4 @@
-# Fire Story - Market Place
+# Fire Store - Market Place
 
 Online store project, using Next.JS
 
