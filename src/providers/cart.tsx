@@ -40,14 +40,14 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     
     useEffect(() => {
       const item = JSON.parse(localStorage.getItem("@fire-store/cart-products") || "[]")
-      console.log(item)
+      // console.log(item)
       setProducts(item);
     }, []);
 
   useEffect(() => {
     
-    if(products){
-      console.log("debug"+products)
+    if(products.length > 0){
+      // console.log("debug"+products)
       localStorage.setItem("@fire-store/cart-products", JSON.stringify(products))
     }
   }, [products])
