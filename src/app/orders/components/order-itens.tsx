@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Order, Prisma } from "@prisma/client";
 import { format } from 'date-fns'
+import OrderProductItem from "./order-product-item";
 
 interface OrderItemProps {
     order: Prisma.OrderGetPayload<{
@@ -20,12 +21,12 @@ const OrderItem = ({order}: OrderItemProps) => {
         <Accordion type="single" className="w-full" collapsible>
             <AccordionItem value={order.id}>
                 <AccordionTrigger>
-                    <div className="flex flex-col gap-1 text-left">
+                    <div className="flex flex-col gap-1 text-left px-12">
                         Pedido com {order.orderProducts.length} produtos(s)
                     </div>
                 </AccordionTrigger>
                 <AccordionContent>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 w-full px-2">
               <div className="flex items-center justify-between lg:hidden">
                 <div className="font-bold">
                   <p className="text-xs lg:text-sm">Status</p>
@@ -46,6 +47,13 @@ const OrderItem = ({order}: OrderItemProps) => {
                   <p className="text-xs opacity-60 lg:text-sm">Cartão</p>
                 </div>
               </div>
+              
+              {order.orderProducts.map((orderProduct) => (
+                <OrderProductItem
+                  key={orderProduct.id}
+                  orderProduct={orderProduct}
+                />
+              ))}
             </div>
                 </AccordionContent>
             </AccordionItem>
