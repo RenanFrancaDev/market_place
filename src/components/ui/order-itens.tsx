@@ -6,7 +6,7 @@ import { format } from 'date-fns'
 import OrderProductItem from "./order-product-item";
 import { useMemo } from "react";
 import { computeProductTotalPrice } from "@/helpers/products";
-import { getOrderStatus } from "../helpers/status";
+import { getOrderStatus } from "../../app/orders/helpers/status";
 
 interface OrderItemProps {
     order: Prisma.OrderGetPayload<{
