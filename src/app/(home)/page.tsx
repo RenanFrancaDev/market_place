@@ -1,12 +1,11 @@
-
-import { useSession } from 'next-auth/react';
-import Image from 'next/image'
-import Categories from './components/categories';
-import ProductList from '@/components/ui/product-list';
-import { prismaClient } from '@/lib/prisma';
-import SectionTitle from '@/components/ui/section-title';
-import PromoBanner from './components/promo-banner';
-import Footer from '@/components/ui/footer';
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import Categories from "./components/categories";
+import ProductList from "@/components/ui/product-list";
+import { prismaClient } from "@/lib/prisma";
+import SectionTitle from "@/components/ui/section-title";
+import PromoBanner from "./components/promo-banner";
+import Footer from "@/components/ui/footer";
 
 export default async function Home() {
   //data = info user
@@ -14,55 +13,49 @@ export default async function Home() {
 
   // Just products that contains deal
   const deals = await prismaClient.product.findMany({
-    where:{
+    where: {
       discountPercentage: {
-        gt:0,
+        gt: 0,
       },
     },
-  })
+  });
 
   const keyboards = await prismaClient.product.findMany({
-    where:{
+    where: {
       category: {
-        slug:"keyboards",
+        slug: "keyboards",
       },
     },
-  })
+  });
 
   const mouses = await prismaClient.product.findMany({
-    where:{
+    where: {
       category: {
-        slug:"mouses",
+        slug: "mouses",
       },
     },
-  })
+  });
 
   return (
-    <div className=''>
-    <PromoBanner
-    src="/banner_home/banner_home01.svg"
-    alt='around 10% of discount'
-    />
+    <div className="">
+      <PromoBanner
+        src="/banner_home/banner_home01.svg"
+        alt="around 10% of discount"
+      />
 
-    <Categories/>
+      <Categories />
 
-    <SectionTitle>Ofertas</SectionTitle>
-    <ProductList products={deals}/>
-    <PromoBanner
-    src="/banner_home/banner_home02.svg"
-    alt='Mouses 10% off'
-    />
+      <SectionTitle>Ofertas</SectionTitle>
+      <ProductList products={deals} />
+      <PromoBanner src="/banner_home/banner_home02.svg" alt="Mouses 10% off" />
 
-    <SectionTitle>Teclados</SectionTitle>
-    <ProductList products={keyboards}/>
+      <SectionTitle>Teclados</SectionTitle>
+      <ProductList products={keyboards} />
 
-    <PromoBanner
-    src="/banner_home/banner_home03.svg"
-    alt='Mouses 10% off'
-    />
+      <PromoBanner src="/banner_home/banner_home03.svg" alt="Mouses 10% off" />
 
-    <SectionTitle>Teclados</SectionTitle>
-    <ProductList products={mouses}/>
+      <SectionTitle>Mouses</SectionTitle>
+      <ProductList products={mouses} />
     </div>
-  )
+  );
 }
