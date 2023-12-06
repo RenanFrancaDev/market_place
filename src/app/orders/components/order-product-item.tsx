@@ -13,7 +13,7 @@ interface OrderProductItemProps {
 const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
   const productTotalPrice = computeProductTotalPrice(orderProduct.product);
   return (
-    <div className="flex items-center gap-4 w-full">
+    <div className="flex w-full items-center gap-4">
       <div className="flex h-[77px] w-[77px] items-center rounded-lg bg-accent">
         <Image
           src={orderProduct.product.imageUrls[0]}
@@ -24,14 +24,14 @@ const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
           alt={orderProduct.product.name}
         />
       </div>
-      <div className="flex w-full flex-col gap-0.5 mr-2">
+      <div className="mr-2 flex w-full flex-col gap-0.5">
         <div className="flex rounded-md bg-accent py-1">
           <p>
             Vendido e entregue por <span className="font-bold">Fire Store</span>
           </p>
         </div>
         <p>{orderProduct.product.name}</p>
-        <div className="flex w-full items-center gap-1 justify-between">
+        <div className="flex w-full items-center justify-between gap-1">
           <div className="flex items-center gap-1">
             <p>R$ {productTotalPrice.totalPrice},00</p>
 
@@ -40,8 +40,8 @@ const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
                 R${Number(productTotalPrice.basePrice).toFixed(2)}
               </small>
             )}
-            </div>
-            <p className="text-xs opacity-60">Qntd: {orderProduct.quantity}</p>
+          </div>
+          <p className="text-xs opacity-60">Qntd: {orderProduct.quantity}</p>
         </div>
       </div>
     </div>
