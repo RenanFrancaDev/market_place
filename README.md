@@ -44,7 +44,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Packages 
 
 - [Next.js](https://nextjs.org/)
-- [Taiwild](https://tailwindcss.com/)
+- [Tailwild](https://tailwindcss.com/)
 - [Axios](https://axios-http.com/ptbr/docs/intro)
 - [NextAuth.js](https://next-auth.js.org/)
 - [Prettier](https://prettier.io/docs/en/install.html)
